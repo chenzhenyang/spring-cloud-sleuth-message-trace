@@ -1,0 +1,27 @@
+server:
+  port: 3383
+spring:
+  application:
+    name: testSleuthMessaging3
+  sleuth:
+    log:
+      slf4j:
+        enabled: true
+    sampler: 
+      percentage: 1.0
+  rabbitmq:
+    host: ${RABBIT_HOST:local.brother}
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+  cloud:
+    stream:
+      bindings:
+        input: 
+          destination: testqueue
+        output: 
+          destination: testqueue
+sample:
+  zipkin:
+    enabled: true
